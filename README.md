@@ -1,20 +1,25 @@
-# RL-Homework2
+# RL_Homework-2
 
 ## :hammer: Build
+
 Clone this package in the `src` folder of your ROS 2 workspace. Check for missing dependencies
+```
+$ git clone https://github.com/FedericoTr26/RL_Homework-2.git
+```
 ```
 $ rosdep install -i --from-path src --rosdistro humble -y
 ```
 Build your new package
+
 ```
-$ colcon build
+$ colcon build --packages-select RL_Homework-2
 ```
 Source the setup files
-```
-$ . install/setup.bash
-```
 
-## :white_check_mark: Usage
+```
+$ source install/setup.bash
+```
+## :white_check_mark: Usage 🤖
 First of all, launch Rviz with Gazebo with the launch file
 ```
 $ ros2 launch iiwa_bringup iiwa.launch.py
@@ -50,6 +55,7 @@ in this case the robot must be launched with the velocity interface
 ```
 $ ros2 launch iiwa_bringup iiwa.launch.py command_interface:="velocity" robot_controller:="velocity_controller"
 ```
+**P.S.: also in this case it's possible to specify what trajectory use (0, 1, 2, 3)**  
 
 **To use the effort commands** 
 ```
@@ -59,4 +65,6 @@ in this case the robot must be launched with the effort interface
 ```
 $ ros2 launch iiwa_bringup iiwa.launch.py command_interface:="effort" robot_controller:="effort_controller"
 ```
-Note that the ros2_kdl_node is set to do an OPERATIONAL SPACE INVERSE DYNAMICS CONTROL, if you like to do a JOINT SPACE INVERSE DYNAMICS CONTROL you must change choice=1
+**P.S.: also in this case it's possible to specify what trajectory use (0, 1, 2, 3)**  
+
+**Note that the ros2_kdl_node is set to do an OPERATIONAL SPACE INVERSE DYNAMICS CONTROL, if you like to do a JOINT SPACE INVERSE DYNAMICS CONTROL you must change choice=1 inside the code.**
