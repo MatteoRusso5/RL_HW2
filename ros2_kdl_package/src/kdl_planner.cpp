@@ -120,7 +120,7 @@ trajectory_point KDLPlanner::compute_trajectory_circ(double time, double accDura
 
 }
 
-trajectory_point KDLPlanner::compute_trajectory_circ(double time)  //for circular path and trapezoidal
+trajectory_point KDLPlanner::compute_trajectory_circ(double time)  //for circular path and cubic_polynomial
 {
   double s,s_dot,s_ddot;
   this->cubic_polynomial(time, s, s_dot, s_ddot);
