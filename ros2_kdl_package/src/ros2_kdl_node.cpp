@@ -359,10 +359,6 @@ class Iiwa_pub_sub : public rclcpp::Node
                     
                     KDL::Twist desired_accel;
                     desired_accel.vel = toKDL(p.acc);
-
-                    robot_->getInverseKinematics(desired_frame, des_joint_positions_);
-                    robot_->getInverseKinematicsVel(desired_vel,des_joint_velocities_);
-                    robot_->getInverseKinematicsAcc(desired_accel,joint_accelerations_d_);  // defined in utils.h
                     
                     joint_efforts_.data=controller_.idCntr(desired_frame,desired_vel,desired_accel,Kpp, Kpo, Kdp, Kdo);
                     }
