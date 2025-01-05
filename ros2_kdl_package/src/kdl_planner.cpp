@@ -177,7 +177,7 @@ void KDLPlanner::trapezoidal_vel(double time, double accDuration, double& s, dou
 
 void KDLPlanner::cubic_polynomial(double t, double& s, double& s_dot, double& s_ddot){
   double a0, a1, a2, a3, s0, sDot0, sDotf, sf; 
-
+# boundary condition
   s0 = 0;
   sDot0 = 0;
   sDotf = 0;
