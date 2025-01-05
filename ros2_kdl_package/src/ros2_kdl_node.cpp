@@ -408,7 +408,6 @@ class Iiwa_pub_sub : public rclcpp::Node
         std::vector<double> desired_commands_ = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
         KDL::JntArray joint_positions_;
         KDL::JntArray joint_velocities_;
-        double t_ext = 5;
         KDL::JntArray joint_efforts_;
 
         KDL::JntArray joint_accelerations_d_;
