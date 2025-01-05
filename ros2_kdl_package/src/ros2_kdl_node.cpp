@@ -169,7 +169,7 @@ class Iiwa_pub_sub : public rclcpp::Node
             
             if(cmd_interface_ == "position"){
                 // Create cmd publisher
-                cmdPublisher_ = this->create_publisher<FloatArray>("/iiwa_arm_controller/commands", 10);
+                cmdPublisher_ = this->create_publisher<FloatArray>("/iiwa_arm_controller/commands", 10); // the name of the topic must be the same in the iiwa_controllers.yaml
                 timer_ = this->create_wall_timer(std::chrono::milliseconds(100), 
                                             std::bind(&Iiwa_pub_sub::cmd_publisher, this));
             
