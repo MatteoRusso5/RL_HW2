@@ -100,7 +100,7 @@ class Iiwa_pub_sub : public rclcpp::Node
             
             robot_->update(toStdVector(joint_positions_.data),toStdVector(joint_velocities_.data));
             KDL::Frame f_T_ee = KDL::Frame::Identity();
-            robot_->addEE(f_T_ee);
+            robot_->addEE(f_T_ee); // f_T_ee is the transformation between last joint and ee frame
             robot_->update(toStdVector(joint_positions_.data),toStdVector(joint_velocities_.data));
 
 
