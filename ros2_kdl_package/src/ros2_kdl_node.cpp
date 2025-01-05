@@ -60,11 +60,11 @@ class Iiwa_pub_sub : public rclcpp::Node
                 }
                 RCLCPP_INFO(this->get_logger(), "service not available, waiting again...");
             }
-            auto parameter = parameters_client->get_parameters({"robot_description"});
+            auto parameter = parameters_client->get_parameters({"robot_description"}); // the URDF description is taken as a list
 
             // create KDLrobot structure
             KDL::Tree robot_tree;
-            if (!kdl_parser::treeFromString(parameter[0].value_to_string(), robot_tree)){
+            if (!kdl_parser::treeFromString(parameter[0].value_to_string(), robot_tree)){ // the value of the list (is a string) is converted in a KDL::Tree object that describe the robot
                 std::cout << "Failed to retrieve robot_description param!";
             }
             robot_ = std::make_shared<KDLRobot>(robot_tree);  
