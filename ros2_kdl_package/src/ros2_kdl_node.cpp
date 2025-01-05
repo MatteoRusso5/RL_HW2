@@ -163,7 +163,7 @@ class Iiwa_pub_sub : public rclcpp::Node
 
             }
 
-            // compute errors
+            // compute errors (debug)
             Eigen::Vector3d error = computeLinearError(p.pos, Eigen::Vector3d(init_cart_pose_.p.data));
             //std::cout << "The initial error is : " << error << std::endl;
             
