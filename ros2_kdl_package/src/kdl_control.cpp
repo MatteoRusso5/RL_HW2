@@ -56,8 +56,16 @@ Eigen::VectorXd KDLController::idCntr(KDL::Frame &_desPos,
 
     computeErrors(_desPos,x,_desVel,dx,x_tilde,dot_x_tilde);
 
-    for (unsigned int i=0;i<3;i++){x_tilde(i)=_Kpp*x_tilde(i);dot_x_tilde(i)=_Kdp*dot_x_tilde(i);}
-    for (unsigned int i=3;i<6;i++){x_tilde(i)=_Kpo*x_tilde(i);dot_x_tilde(i)=_Kdo*dot_x_tilde(i);}
+    for (unsigned int i=0;i<3;i++)
+    {
+      x_tilde(i)=_Kpp*x_tilde(i);
+      dot_x_tilde(i)=_Kdp*dot_x_tilde(i);
+    }
+    for (unsigned int i=3;i<6;i++)
+    {
+      x_tilde(i)=_Kpo*x_tilde(i);
+      dot_x_tilde(i)=_Kdo*dot_x_tilde(i);
+    }
     
     Eigen::Matrix<double,7,1> y;
     y = pseudoinverse(robot_->getEEJacobian().data)*(toEigen(_desAcc)+x_tilde+dot_x_tilde-robot_->getEEJacDotqDot());
