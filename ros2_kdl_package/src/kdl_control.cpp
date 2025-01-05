@@ -44,16 +44,6 @@ Eigen::VectorXd KDLController::idCntr(KDL::Frame &_desPos,
 
     Vector6d x_tilde, dot_x_tilde;
 
-    Eigen::Matrix<double,6,6> Kp;
-    Eigen::Matrix<double,6,6> Kd;
-    Kp.setZero();
-    Kd.setZero();
-
-    Kp.block(0,0,3,3) = _Kpp*Eigen::Matrix3d::Identity();
-    Kp.block(3,3,3,3) = _Kpo*Eigen::Matrix3d::Identity();
-    Kd.block(0,0,3,3) = _Kdp*Eigen::Matrix3d::Identity();
-    Kd.block(3,3,3,3) = _Kdo*Eigen::Matrix3d::Identity();
-
     computeErrors(_desPos,x,_desVel,dx,x_tilde,dot_x_tilde);
 
     for (unsigned int i=0;i<3;i++)
