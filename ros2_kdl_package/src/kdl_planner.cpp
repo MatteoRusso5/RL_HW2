@@ -154,7 +154,7 @@ void KDLPlanner::trapezoidal_vel(double time, double accDuration, double& s, dou
      trajEnd_  = trajectory final point */  
   
  // Eigen::Vector3d sc_ddot = -1.0/(std::pow(accDuration,2)-trajDuration_*accDuration)*(trajEnd_-trajInit_);
-  double sc_ddot=-1.0/(std::pow(accDuration,2)-trajDuration_*accDuration);
+  double sc_ddot=-1.0/(std::pow(accDuration,2)-trajDuration_*accDuration); # inverse formula from Siciliano's book (formula 4.5)
   if(time <= accDuration)
   {
     s = 0.5*sc_ddot*std::pow(time,2);
