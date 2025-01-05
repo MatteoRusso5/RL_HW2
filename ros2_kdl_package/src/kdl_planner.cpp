@@ -106,7 +106,7 @@ trajectory_point KDLPlanner::compute_trajectory_circ(double time, double accDura
   
 
   traj.pos.x() = trajInit_.x();
-  traj.pos.y() = trajInit_.y() + trajRadius_ - trajRadius_*cos(2*M_PI*s); # added a term to let the trajectory start not from the center
+  traj.pos.y() = trajInit_.y() + trajRadius_ - trajRadius_*cos(2*M_PI*s); // added a term to let the trajectory start not from the center
   traj.pos.z() = trajInit_.z() - trajRadius_*sin(2*M_PI*s);
   traj.vel.x() = 0;  //s_dot*(trajEnd_-trajInit_);
   traj.vel.y() = trajRadius_*sin(2*M_PI*s)*2*M_PI*s_dot;
@@ -154,7 +154,7 @@ void KDLPlanner::trapezoidal_vel(double time, double accDuration, double& s, dou
      trajEnd_  = trajectory final point */  
   
  // Eigen::Vector3d sc_ddot = -1.0/(std::pow(accDuration,2)-trajDuration_*accDuration)*(trajEnd_-trajInit_);
-  double sc_ddot=-1.0/(std::pow(accDuration,2)-trajDuration_*accDuration); # inverse formula from Siciliano's book (formula 4.5)
+  double sc_ddot=-1.0/(std::pow(accDuration,2)-trajDuration_*accDuration); // inverse formula from Siciliano's book (formula 4.5)
   if(time <= accDuration)
   {
     s = 0.5*sc_ddot*std::pow(time,2);
