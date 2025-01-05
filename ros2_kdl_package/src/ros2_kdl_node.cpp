@@ -35,7 +35,7 @@ class Iiwa_pub_sub : public rclcpp::Node
     public:
         Iiwa_pub_sub()
         : Node("ros2_kdl_node"), 
-        node_handle_(std::shared_ptr<Iiwa_pub_sub>(this))
+        node_handle_(std::shared_ptr<Iiwa_pub_sub>(this)) # to manage the creation of the node
         {
             // declare cmd_interface parameter (position, velocity)
             declare_parameter("cmd_interface", "position"); // defaults to "position"
