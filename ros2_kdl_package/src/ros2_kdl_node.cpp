@@ -193,7 +193,7 @@ class Iiwa_pub_sub : public rclcpp::Node
                 // Create cmd publisher
                 cmdPublisher_ = this->create_publisher<FloatArray>("/velocity_controller/commands", 10);
                 timer_ = this->create_wall_timer(std::chrono::milliseconds(100), 
-                                            std::bind(&Iiwa_pub_sub::cmd_publisher, this));
+                                            std::bind(&Iiwa_pub_sub::cmd_publisher, this)); // the callback is called each time the timer triggers.
             
                 // Send joint velocity commands
                 for (long int i = 0; i < joint_velocities_.data.size(); ++i) {
