@@ -106,7 +106,7 @@ trajectory_point KDLPlanner::compute_trajectory_circ(double time, double accDura
   
 
   traj.pos.x() = trajInit_.x();
-  traj.pos.y() = trajInit_.y() - trajRadius_*cos(2*M_PI*s);
+  traj.pos.y() = trajInit_.y() + trajRadius_ - trajRadius_*cos(2*M_PI*s);
   traj.pos.z() = trajInit_.z() - trajRadius_*sin(2*M_PI*s);
   traj.vel.x() = 0;  //s_dot*(trajEnd_-trajInit_);
   traj.vel.y() = trajRadius_*sin(2*M_PI*s)*2*M_PI*s_dot;
@@ -129,7 +129,7 @@ trajectory_point KDLPlanner::compute_trajectory_circ(double time)  //for circula
   
 
   traj.pos.x() = trajInit_.x();
-  traj.pos.y() = trajInit_.y() - trajRadius_*cos(2*M_PI*s);
+  traj.pos.y() = trajInit_.y() + trajRadius_ - trajRadius_*cos(2*M_PI*s);
   traj.pos.z() = trajInit_.z() - trajRadius_*sin(2*M_PI*s);
   traj.vel.x() = 0;  //s_dot*(trajEnd_-trajInit_);
   traj.vel.y() = trajRadius_*sin(2*M_PI*s)*2*M_PI*s_dot;
