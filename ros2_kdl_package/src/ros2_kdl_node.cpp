@@ -246,10 +246,7 @@ class Iiwa_pub_sub : public rclcpp::Node
                 }
 
                 // Compute EE frame
-                KDL::Frame cartpos = robot_->getEEFrame();           
-
-                // Compute desired Frame
-                KDL::Frame desFrame; desFrame.M = cartpos.M; desFrame.p = toKDL(p.pos); 
+                KDL::Frame cartpos = robot_->getEEFrame();            
 
                 // compute errors
                 Eigen::Vector3d error = computeLinearError(p.pos, Eigen::Vector3d(cartpos.p.data));
