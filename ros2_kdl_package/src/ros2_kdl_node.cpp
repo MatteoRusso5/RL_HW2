@@ -229,70 +229,19 @@ class Iiwa_pub_sub : public rclcpp::Node
                 switch(traj_chosen)
                 {
                     case 1:
-                            
-                        if(t_ <= total_time) {
                             p = planner_.compute_trajectory(t_);
-                            if(t_ >= total_time - dt) {                     // last dt before the end of the trajectory
-                                p = planner_.compute_trajectory(t_);
-                                final_pos = p;
-                            }
-                        }
-                        else {
-                            // std::cout << "tempo attuale" << t_;
-                            p.pos = final_pos.pos;
-                            p.vel = Eigen::Vector3d::Zero();
-                            p.acc = Eigen::Vector3d::Zero();
-                        }
-                        // }
                         break;
+                 
                     case 2:
-                        if(t_ <= total_time) {
                             p = planner_.compute_trajectory_circ(t_,acc_duration);
-                            if(t_ >= total_time - dt) {
-                                p = planner_.compute_trajectory_circ(t_,acc_duration);
-                                final_pos = p;
-                            }
-                        }
-                        else {
-                            // std::cout << "tempo attuale" << t_;
-                            p.pos = final_pos.pos;
-                            p.vel = Eigen::Vector3d::Zero();
-                            p.acc = Eigen::Vector3d::Zero();
-                        }
-                        
                         break;
+                 
                     case 3:
-                        if(t_ <= total_time) {
                             p = planner_.compute_trajectory_circ(t_);
-                            if(t_ >= total_time - dt) {
-                                p = planner_.compute_trajectory_circ(t_);
-                                final_pos = p;
-                            }
-                        }
-                        else {
-                            // std::cout << "tempo attuale" << t_;
-                            p.pos = final_pos.pos;
-                            p.vel = Eigen::Vector3d::Zero();
-                            p.acc = Eigen::Vector3d::Zero();
-                        }
-                        
                         break;
 
                     default:
-                        if(t_ <= total_time) {
                             p = planner_.compute_trajectory(t_,acc_duration);
-                            if(t_ >= total_time - dt) {
-                                p = planner_.compute_trajectory(t_,acc_duration);
-                                final_pos = p;
-                            }
-                        }
-                        else {
-                            // std::cout << "tempo attuale" << t_;
-                            p.pos = final_pos.pos;
-                            p.vel = Eigen::Vector3d::Zero();
-                            p.acc = Eigen::Vector3d::Zero();
-                        }
-                        
                         break;
                 }
 
@@ -334,10 +283,6 @@ class Iiwa_pub_sub : public rclcpp::Node
                     
                     KDLController controller_(*robot_);
                     joint_efforts_.data = controller_.idCntr(joint_positions_, joint_velocities_, joint_accelerations_d_, 50.0, 5.0);
-
-                    KDL::Frame frame_final = robot_->getEEFrame();
-                    KDL::Twist velocities_final; velocities_final.vel=KDL::Vector::Zero(); velocities_final.rot=KDL::Vector::Zero();
-                    KDL::Twist acceleration_final; acceleration_final.vel=KDL::Vector::Zero(); acceleration_final.rot=KDL::Vector::Zero();
 
                     
                     }
