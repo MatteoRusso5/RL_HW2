@@ -67,7 +67,7 @@ class Iiwa_pub_sub : public rclcpp::Node
             if (!kdl_parser::treeFromString(parameter[0].value_to_string(), robot_tree)){ // the value of the list (is a string) is converted in a KDL::Tree object that describe the robot
                 std::cout << "Failed to retrieve robot_description param!";
             }
-            robot_ = std::make_shared<KDLRobot>(robot_tree);  
+            robot_ = std::make_shared<KDLRobot>(robot_tree);  // from the tree, it creates a KDLRobot that uses various KDL functions to work with the robot
             
             // Create joint array
             unsigned int nj = robot_->getNrJnts();
